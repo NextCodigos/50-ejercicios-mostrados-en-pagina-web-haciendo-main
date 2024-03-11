@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir Texto</title>
+</head>
+<body>
+    <h1>Convertir Texto a Mayúsculas o Minúsculas</h1>
+    <label for="texto">Introduce un texto:</label>
+    <input type="text" id="texto">
+    <button id="btnConvertir">Convertir</button>
+    <p id="resultado"></p>
+
+    <script>
+        function mayusMinus(texto){
+            let mayusculas = 0;
+            let minusculas = 0;
+
+            for(let letra of texto){
+                if(/[A-Z]/.test(letra)){
+                    mayusculas++;
+                } else {
+                    minusculas++;
+                }
+            }
+
+            let resultado = (mayusculas > minusculas) ? texto.toUpperCase() : texto.toLowerCase();
+            return resultado;
+        }
+
+        document.getElementById('btnConvertir').addEventListener('click', function(){
+            let texto = document.getElementById('texto').value;
+            let resultado = mayusMinus(texto);
+            document.getElementById('resultado').textContent = resultado;
+        });
+    </script>
+</body>
+</html>

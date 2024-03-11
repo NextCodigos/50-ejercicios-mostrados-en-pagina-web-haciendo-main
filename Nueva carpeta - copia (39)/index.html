@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Email</title>
+</head>
+<body>
+    <h1>Validación de Email</h1>
+
+    <label for="emailInput">Introduce tu email:</label>
+    <input type="text" id="emailInput" placeholder="Ejemplo: usuario@ejemplo.com">
+    <button onclick="validarEmail()">Validar Email</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function comprobarEmail(email) {
+            return /^\w+@\w+\.\w+$/gi.test(email);
+        }
+
+        function validarEmail() {
+            const emailInput = document.getElementById("emailInput");
+            const resultado = document.getElementById("resultado");
+
+            const email = emailInput.value;
+
+            if (comprobarEmail(email)) {
+                resultado.textContent = `El email ${email} es válido. ✅`;
+            } else {
+                resultado.textContent = `El email ${email} no es válido. ❌`;
+            }
+        }
+    </script>
+</body>
+</html>

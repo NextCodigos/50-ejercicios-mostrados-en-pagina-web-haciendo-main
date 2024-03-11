@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemento Más Frecuente</title>
+</head>
+<body>
+    <h1>Elemento Más Frecuente en una Lista</h1>
+
+    <label for="input">Introduce una lista de elementos:</label>
+    <input type="text" id="input" placeholder="Ejemplo: victor robles hola victor">
+    <button onclick="encontrarMasFrecuente()">Encontrar</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function elQueMasAparece(datos) {
+            let mapeo = {}, mas_frecuente = "", mayor_valor = 0;
+        
+            if (typeof datos === "string") {
+                datos = datos.split(" ");
+            }
+        
+            for (let elemento of datos) {
+        
+                if (mapeo[elemento]) {
+                    mapeo[elemento]++;
+        
+                } else {
+                    mapeo[elemento] = 1;
+                }
+                
+            }
+        
+            for (let elemento in mapeo) {
+                if (mapeo[elemento] > mayor_valor) {
+                    mayor_valor = mapeo[elemento];
+                    mas_frecuente = elemento;
+                }
+            }
+        
+            return {
+                "mas_frecuente": mas_frecuente,
+                "mayor_valor": mayor_valor
+            };
+        }
+        
+        function encontrarMasFrecuente() {
+            const entrada = document.getElementById("input").value;
+            const resultadoElemento = document.getElementById("resultado");
+        
+            if (entrada.length > 0) {
+                const resultado = elQueMasAparece(entrada);
+                resultadoElemento.textContent = `El elemento más frecuente es "${resultado.mas_frecuente}" con ${resultado.mayor_valor} apariciones.`;
+            } else {
+                resultadoElemento.textContent = 'Por favor, introduce una lista de elementos.';
+            }
+        }
+    </script>
+</body>
+</html>

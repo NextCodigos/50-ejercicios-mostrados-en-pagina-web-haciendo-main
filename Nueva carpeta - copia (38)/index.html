@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadrados de Números</title>
+</head>
+<body>
+    <h1>Cuadrados de Números</h1>
+
+    <label for="numInput">Introduce un número:</label>
+    <input type="number" id="numInput" placeholder="Ejemplo: 78">
+    <button onclick="mostrarCuadrados()">Mostrar Cuadrados</button>
+
+    <h2>Resultado:</h2>
+    <ul id="resultado"></ul>
+
+    <script>
+        function cuadrado(numero) {
+            return numero * numero;
+        }
+
+        function mostrar(numero) {
+            const resultados = [];
+            for (let i = 0; i <= numero; i++) {
+                resultados.push(cuadrado(i));
+            }
+            return resultados;
+        }
+
+        function mostrarCuadrados() {
+            const inputNumero = document.getElementById("numInput");
+            const resultadoElemento = document.getElementById("resultado");
+
+            const numero = parseInt(inputNumero.value);
+
+            if (Number.isInteger(numero) && numero >= 0) {
+                const resultados = mostrar(numero);
+                resultadoElemento.innerHTML = "";
+                resultados.forEach(resultado => {
+                    const li = document.createElement("li");
+                    li.textContent = `El cuadrado de ${resultados.indexOf(resultado)} es ${resultado}.`;
+                    resultadoElemento.appendChild(li);
+                });
+            } else {
+                resultadoElemento.innerHTML = "Por favor, introduce un número entero positivo.";
+            }
+        }
+    </script>
+</body>
+</html>

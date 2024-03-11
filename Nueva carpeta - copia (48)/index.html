@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encontrar letras únicas</title>
+</head>
+<body>
+    <h1>Encontrar letras únicas en un texto</h1>
+    <label for="textoInput">Ingrese un texto:</label>
+    <input type="text" id="textoInput"><br>
+    <button onclick="buscarLetrasUnicas()">Buscar letras únicas</button><br>
+    <div id="resultado"></div>
+
+    <script>
+        function soloUnaVez(texto) {
+            let contadores = {};
+            let resultado = [];
+            
+            let letras = texto.split('')
+                              .filter(letra => letra.trim().length >= 1)
+                              .map(letra => letra.toUpperCase());
+            
+            for (let letra of letras) {
+                if (!contadores[letra]) {
+                    contadores[letra] = 1;
+                } else {
+                    contadores[letra]++;
+                }
+            }
+
+            for (let letra in contadores) {
+                if (contadores[letra] === 1) {
+                    resultado.push(letra);
+                }
+            }
+
+            let primeraLetra = resultado[0];
+
+            return [resultado, primeraLetra];
+        }
+
+        function buscarLetrasUnicas() {
+            const texto = document.getElementById('textoInput').value.trim(); // Se añade trim() para eliminar espacios en blanco
+            if (texto === '') {
+                document.getElementById('resultado').innerHTML = 'Ingrese un texto válido';
+                return;
+            }
+
+            const [letrasUnicas, primeraLetra] = soloUnaVez(texto);
+            
+            document.getElementById('resultado').innerHTML = `Letras únicas: ${letrasUnicas}, Primera letra única: ${primeraLetra}`;
+        }
+    </script>
+</body>
+</html>

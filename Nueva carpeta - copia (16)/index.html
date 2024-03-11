@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Vocales</title>
+</head>
+<body>
+    <h1>Contador de Vocales</h1>
+    <label for="textoInput">Introduce un texto:</label>
+    <input type="text" id="textoInput">
+    <button onclick="contarVocales()">Contar Vocales</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function vocales(texto) {
+            let coincidencias = texto.match(/[aeiou]/gi);
+            return coincidencias ? coincidencias.length : 0;
+        }
+
+        function contarVocales() {
+            const texto = document.getElementById('textoInput').value;
+            const resultado = vocales(texto);
+            document.getElementById('resultadoOutput').innerText = "El número de vocales es: " + resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Permutación</title>
+</head>
+<body>
+    <h1>Verificar Permutación</h1>
+    <label for="secuenciaInput">Introduce la secuencia de números separados por comas:</label>
+    <input type="text" id="secuenciaInput">
+    
+    <label for="numeroInput">Introduce el número:</label>
+    <input type="number" id="numeroInput">
+
+    <button onclick="verificarPermutacion()">Verificar</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function permutacion(secuencia, numero) {
+            for (let i = 0; i < numero; i++) {
+                if (secuencia.indexOf(i + 1) === -1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function verificarPermutacion() {
+            const secuencia = document.getElementById('secuenciaInput').value.split(",").map(num => parseInt(num));
+            const numero = parseInt(document.getElementById('numeroInput').value);
+            const resultado = permutacion(secuencia, numero);
+
+            const resultadoOutput = document.getElementById('resultadoOutput');
+            if (resultado) {
+                resultadoOutput.innerText = "La secuencia es una permutación de los números del 1 al " + numero;
+            } else {
+                resultadoOutput.innerText = "La secuencia NO es una permutación de los números del 1 al " + numero;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generar Número Aleatorio</title>
+</head>
+<body>
+    <label for="minimo">Valor Mínimo:</label>
+    <input type="number" id="minimo" placeholder="Ingrese el valor mínimo"></input>
+    <br>
+    <label for="maximo">Valor Máximo:</label>
+    <input type="number" id="maximo" placeholder="Ingrese el valor máximo"></input>
+    <br>
+    <button onclick="generarNumeroAleatorio()">Generar Número Aleatorio</button>
+    <p id="resultado"></p>
+
+    <script>
+        function aleatorio(minimo, maximo){
+            return Math.round(Math.random() * (maximo - minimo) + minimo);
+        }
+
+        function generarNumeroAleatorio() {
+            const minimo = document.getElementById("minimo").value.trim();
+            const maximo = document.getElementById("maximo").value.trim();
+
+            if (minimo === "" || maximo === "") {
+                alert("Por favor, ingrese un número en ambos campos.");
+                return;
+            }
+
+            const resultado = aleatorio(parseInt(minimo), parseInt(maximo));
+
+            document.getElementById("resultado").innerText = `Número aleatorio generado: ${resultado}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Más Alto y Más Bajo</title>
+</head>
+<body>
+    <h1>Número Más Alto y Más Bajo</h1>
+
+    <label for="numerosInput">Introduce los números del array separados por comas (,):</label>
+    <input type="text" id="numerosInput" placeholder="Ejemplo: 88, 100, 1, 2, 3, 43, 20">
+
+    <button onclick="calcularNumeroAltoBajo()">Calcular Números Alto y Bajo</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function altoBajo(numeros) {
+            let ordenados = numeros.sort((a, b) => a - b);
+
+            return {
+                bajo: ordenados[0],
+                alto: ordenados[ordenados.length - 1]
+            };
+        }
+
+        function calcularNumeroAltoBajo() {
+            const numerosInput = document.getElementById("numerosInput").value;
+            if (numerosInput.trim() === '') {
+                mostrarMensajeError('Por favor, introduce al menos un número válido.');
+                return;
+            }
+
+            const numeros = numerosInput.split(',').map(n => parseInt(n.trim()));
+
+            // Verificar si hay algún NaN después de parsear los números
+            if (numeros.some(isNaN)) {
+                mostrarMensajeError('Por favor, introduce números válidos separados por coma.');
+                return;
+            }
+
+            const resultado = altoBajo(numeros);
+
+            const resultadoElement = document.getElementById("resultado");
+            resultadoElement.textContent = `El número más bajo es: ${resultado.bajo} y el número más alto es: ${resultado.alto}`;
+        }
+
+        function mostrarMensajeError(mensaje) {
+            const resultadoElement = document.getElementById("resultado");
+            resultadoElement.textContent = mensaje;
+        }
+    </script>
+</body>
+</html>

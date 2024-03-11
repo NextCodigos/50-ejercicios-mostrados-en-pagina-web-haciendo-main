@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificador de Números Capicúa</title>
+</head>
+<body>
+<h1>🔢 Verificador de Números Capicúa 🔁</h1>
+<label for="numero">Ingresa un número:</label>
+<input type="number" id="numero" name="numero">
+<br>
+<button onclick="verificarCapicua()">Verificar Capicúa</button>
+<p id="resultado"></p>
+
+<script>
+function verificarCapicua() {
+    const numeroInput = document.getElementById('numero');
+    const numero = parseInt(numeroInput.value);
+
+    let procesado = parseInt(numero
+                    .toString()
+                    .split('')
+                    .reverse()
+                    .join('')
+    );
+
+    const resultado = document.getElementById('resultado');
+    if (numero === procesado) {
+        resultado.innerText = `${numero} es un número capicúa! 🎉`;
+    } else {
+        resultado.innerText = `${numero} no es un número capicúa. 😔`;
+    }
+}
+</script>
+</body>
+</html>

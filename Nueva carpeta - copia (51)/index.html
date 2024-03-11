@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Números Pares e Impares</title>
+</head>
+<body>
+    <h1>Números Pares e Impares</h1>
+    <label for="numerosInput">Ingrese los números separados por comas:</label>
+    <input type="text" id="numerosInput" placeholder="Ej. 1,2,3,4,5"><br>
+    <button onclick="separarParesImpares()">Separar Pares e Impares</button><br>
+    <div id="resultado"></div>
+
+    <script>
+        function pares(numeros){
+            return{
+                pares: numeros.filter(num => num % 2 === 0),
+                impares: numeros.filter(num => num % 2 !== 0)
+            }
+        }
+
+        function separarParesImpares() {
+            const numerosStr = document.getElementById('numerosInput').value;
+            const numeros = numerosStr.split(',').map(num => parseInt(num.trim()));
+
+            if(numeros.every(num => !isNaN(num))){
+                const resultado = pares(numeros);
+                document.getElementById('resultado').innerHTML = `
+                    <strong>Pares:</strong> ${resultado.pares}<br>
+                    <strong>Impares:</strong> ${resultado.impares}
+                `;
+            } else {
+                document.getElementById('resultado').innerText = 'Por favor, ingrese números válidos separados por comas.';
+            }
+        }
+    </script>
+</body>
+</html>

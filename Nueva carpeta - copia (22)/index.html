@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayor y Menor</title>
+</head>
+<body>
+    <h1>Mayor y Menor</h1>
+    <label for="numero1Input">Introduce el primer número:</label>
+    <input type="number" id="numero1Input">
+
+    <label for="numero2Input">Introduce el segundo número:</label>
+    <input type="number" id="numero2Input">
+
+    <button onclick="determinarMayorMenor()">Determinar Mayor y Menor</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function mayorMenor(numero1, numero2) {
+            let resultado = "";
+
+            if (numero1 === numero2) {
+                resultado = "Los números son iguales !!";
+            } else if (numero1 > numero2) {
+                resultado = "El número mayor es: " + numero1 + "<br>";
+                resultado += "El número menor es: " + numero2;
+            } else {
+                resultado = "El número mayor es: " + numero2 + "<br>";
+                resultado += "El número menor es: " + numero1;
+            }
+
+            return resultado;
+        }
+
+        function determinarMayorMenor() {
+            const numero1 = parseInt(document.getElementById('numero1Input').value);
+            const numero2 = parseInt(document.getElementById('numero2Input').value);
+            const resultado = mayorMenor(numero1, numero2);
+
+            document.getElementById('resultadoOutput').innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recortar Texto</title>
+</head>
+<body>
+    <h1>Recortar Texto</h1>
+    <label for="textoInput">Introduce un texto:</label>
+    <input type="text" id="textoInput">
+
+    <label for="caracteresInput">Introduce el número de caracteres a recortar:</label>
+    <input type="number" id="caracteresInput">
+
+    <button onclick="recortarTexto()">Recortar</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function recortar(texto, hasta) {
+            let resultado = "";
+
+            if (typeof texto === 'string' && typeof hasta === 'number') {
+                resultado = texto.substring(0, hasta);
+            } else {
+                resultado = "¡Introduce los datos correctamente!";
+            }
+
+            return resultado;
+        }
+
+        function recortarTexto() {
+            const texto = document.getElementById('textoInput').value;
+            const hasta = parseInt(document.getElementById('caracteresInput').value);
+            const resultado = recortar(texto, hasta);
+            
+            document.getElementById('resultadoOutput').innerText = resultado;
+        }
+    </script>
+</body>
+</html>

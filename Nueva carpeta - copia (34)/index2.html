@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+
+    <label for="numero1">Número 1:</label>
+    <input type="number" id="numero1" placeholder="Ingresa el primer número">
+
+    <label for="numero2">Número 2:</label>
+    <input type="number" id="numero2" placeholder="Ingresa el segundo número">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function calculadora(numero1, numero2){
+            let resultado = `
+                La suma es: ${numero1 + numero2} <br>  
+                La resta es: ${numero1 - numero2} <br>   
+                La multiplicación es: ${numero1 * numero2} <br>   
+                La división es: ${numero1 / numero2} <br>      
+            `;
+        
+            return resultado;
+        }
+
+        function calcular() {
+            const numero1 = parseFloat(document.getElementById("numero1").value);
+            const numero2 = parseFloat(document.getElementById("numero2").value);
+
+            const resultadoElement = document.getElementById("resultado");
+            resultadoElement.innerHTML = calculadora(numero1, numero2);
+        }
+    </script>
+</body>
+</html>

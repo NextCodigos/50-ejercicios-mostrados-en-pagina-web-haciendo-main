@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+</head>
+<body>
+    <h1>Reloj Digital</h1>
+    <p id="reloj"></p>
+    <input type="time" id="alarmaInput">
+    <button id="btnStartStop">Iniciar</button>
+
+    <script>
+        class Reloj {
+            constructor() {
+                this.fecha = new Date();
+                this.horas = this.fecha.getHours();
+                this.minutos = this.fecha.getMinutes();
+                this.segundos = this.fecha.getSeconds();
+                this.alarmaHora = null;
+                this.alarmaMinuto = null;
+            }
+
+            actualizar(segundos) {
+                this.segundos += segundos;
+
+                if (this.segundos >= 60) {
+                    this.minutos++;
+                    this.segundos = 0;
+                }
+
+                if (this.minutos >= 60) {
+                    this.horas++;
+                    this.minutos = 0;
+                }
+
+                if (this.horas >= 24) {
+                    this.horas = 0;
+                }
+
+                this.verificarAlarma();
+            }
+
+            mostrar() {
+                this.actualizar(1);
+                document.getElementById("reloj").innerText = `${this.horas}:${this.minutos}:${this.segundos}`;
+            }
+
+            encender() {
+                this.intervalo = setInterval(() => {
+                    this.mostrar();
+                }, 1000);
+            }
+
+            detener() {
+                clearInterval(this.intervalo);
+            }
+
+            setAlarma(hora, minuto) {
+                this.alarmaHora = hora;
+                this.alarmaMinuto = minuto;
+            }
+
+            verificarAlarma() {
+                if (this.horas === this.alarmaHora && this.minutos === this.alarmaMinuto && this.segundos === 0) {
+                    alert("¡Alarma activada!");
+                }
+            }
+        }
+
+        let miReloj = new Reloj();
+        miReloj.encender();
+
+        const btnStartStop = document.getElementById("btnStartStop");
+        btnStartStop.addEventListener("click", () => {
+            if (btnStartStop.innerText === "Iniciar") {
+                miReloj.encender();
+                btnStartStop.innerText = "Detener";
+            } else {
+                miReloj.detener();
+                btnStartStop.innerText = "Iniciar";
+            }
+        });
+
+        const alarmaInput = document.getElementById("alarmaInput");
+        alarmaInput.addEventListener("change", () => {
+            const [hora, minuto] = alarmaInput.value.split(":");
+            miReloj.setAlarma(Number(hora), Number(minuto));
+        });
+    </script>
+</body>
+</html>

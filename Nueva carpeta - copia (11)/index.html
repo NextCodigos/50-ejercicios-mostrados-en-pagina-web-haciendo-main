@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Censurador de Texto</title>
+</head>
+<body>
+    <h1>Censurador de Texto</h1>
+    
+    <form id="censuradorForm">
+        <label for="textoInput">Texto:</label><br>
+        <input type="text" id="textoInput" name="texto"><br><br>
+        
+        <label for="busquedaInput">Búsqueda:</label><br>
+        <input type="text" id="busquedaInput" name="busqueda"><br><br>
+        
+        <button type="button" onclick="censurarTexto()">Censurar</button><br><br>
+        
+        <p id="resultado"></p>
+    </form>
+<script>
+    function censurarTexto() {
+        let texto = document.getElementById("textoInput").value;
+        let busqueda = document.getElementById("busquedaInput").value;
+        let resultado = censurado(texto, busqueda);
+        document.getElementById("resultado").innerText = resultado;
+
+        // Limpiar los campos de entrada después de mostrar el resultado
+        document.getElementById("textoInput").value = "";
+        document.getElementById("busquedaInput").value = "";
+    }
+
+    function censurado(texto=false, busqueda=false) {
+        let resultado = "";
+
+        if (!texto && !busqueda) {
+            resultado = "No puedes leer el texto y la búsqueda";
+        } else if (!texto && busqueda) {
+            resultado = "No puedes leer el texto";
+        } else if (texto && !busqueda) {
+            resultado = "No puedes hacer la búsqueda";
+        } else if (texto && busqueda) {
+            resultado = texto.replace(new RegExp(busqueda, 'gi'), "[-CENSURADO-]");
+        }
+
+        return resultado;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los Substrings</title>
+</head>
+<body>
+    <h1>Cálculo de Todos los Substrings</h1>
+
+    <form id="substringForm">
+        <label for="palabra">Ingrese una palabra para obtener sus subcadenas:</label>
+        <input type="text" id="palabra" name="palabra" placeholder="Ej: hola">
+
+        <button type="button" onclick="calcularSubstrings()">Calcular Substrings</button>
+    </form>
+
+    <p>Subcadenas resultantes:</p>
+    <ul id="substringsList"></ul>
+
+    <script>
+        function todosSubStrings(palabra) {
+            let substrings = [];
+
+            for (let i = 0; i < palabra.length; i++) {
+                for (let j = i + 1; j <= palabra.length; j++) {
+                    substrings.push(palabra.slice(i, j));
+                }
+            }
+
+            return substrings;
+        }
+
+        function calcularSubstrings() {
+            const palabraInput = document.getElementById('palabra').value;
+            const substringsList = document.getElementById('substringsList');
+
+            substringsList.innerHTML = '';
+
+            if (palabraInput) {
+                const subcadenas = todosSubStrings(palabraInput);
+
+                subcadenas.forEach(subcadena => {
+                    const li = document.createElement('li');
+                    li.textContent = subcadena;
+                    substringsList.appendChild(li);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ángulos</title>
+</head>
+<body>
+    <h1>Calculadora de Tipos de Ángulos</h1>
+    <label for="inputAngulo">Ingresa un ángulo:</label>
+    <input type="number" id="inputAngulo" placeholder="Ingrese el ángulo">
+    <button onclick="calcularAngulo()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        function angulo(abertura){
+            let resultado = "🔼 Angulo Completo 🔼";
+        
+            if(abertura < 90){
+                resultado = "🔽 Angulo Agudo 🔽";
+            
+            }else if(abertura === 90){
+                resultado = "⏹️ Angulo Recto ⏹️";
+            
+            }else if(abertura > 90 && abertura < 180){
+                resultado =  "◀️ Angulo Obtuso ◀️";
+        
+            }else if(abertura === 180){
+                resultado = "⏺️ Angulo Llano ⏺️";
+            
+            }else if(abertura > 180 && abertura < 360){
+                resultado = "🔄 Angulo Concavo 🔄";
+        
+            }
+        
+            return resultado;
+        }
+
+        function calcularAngulo(){
+            const inputAngulo = document.getElementById("inputAngulo").value;
+            const resultado = angulo(Number(inputAngulo));
+            document.getElementById("resultado").innerText = `El ángulo es: ${resultado}`;
+        }
+    </script>
+</body>
+</html>

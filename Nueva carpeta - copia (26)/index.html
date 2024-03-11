@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Calculator</title>
+</head>
+<body>
+    <input type="number" id="numero" placeholder="Enter a number">
+    <input type="text" id="serieCompleta" placeholder="Serie completa" readonly>
+    <input type="text" id="serieFib" placeholder="Serie fib" readonly>
+    <button id="calcular">Calcular</button>
+
+    <script>
+        function fibonacci(numero) {
+            let serie = [0, 1];
+
+            for (let i = 2; i <= numero; i++) {
+                serie.push(serie[i - 1] + serie[i - 2]);
+            }
+
+            return [serie, serie[numero]];
+        }
+
+        document.getElementById('calcular').addEventListener('click', function() {
+            const numero = parseInt(document.getElementById('numero').value);
+
+            if (!isNaN(numero)) {
+                const resultado = fibonacci(numero);
+                document.getElementById('serieCompleta').value = resultado[0].join(', ');
+                document.getElementById('serieFib').value = resultado[1];
+            } else {
+                alert('Por favor, introduzca un número válido.');
+            }
+        });
+    </script>
+</body>
+</html>

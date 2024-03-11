@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dos Palabras</title>
+</head>
+<body>
+    <h1>Elementos con más de dos palabras</h1>
+    
+    <form id="palabrasForm">
+        <label for="palabras">Ingrese las palabras separadas por coma (,):</label>
+        <input type="text" id="palabras" name="palabras" placeholder="Ej: hola, san francisco, ciudad real, ramon">
+
+        <button type="button" onclick="filtrarPalabras()">Filtrar Palabras</button>
+    </form>
+
+    <p>Palabras formadas por más de dos palabras: <span id="resultado"></span></p>
+
+    <script>
+        function dosPalabras(elementos) {
+            let nuevos_elementos = [];
+    
+            for (palabra of elementos) {
+                if (palabra.split(' ').length >= 2) {
+                    nuevos_elementos.push(palabra);
+                }
+            }
+    
+            return nuevos_elementos;
+        }
+
+        function filtrarPalabras() {
+            const palabrasInput = document.getElementById('palabras').value;
+            const resultadoSpan = document.getElementById('resultado');
+    
+            if (palabrasInput) {
+                const palabrasArray = palabrasInput.split(',').map(palabra => palabra.trim());
+                const palabrasFiltradas = dosPalabras(palabrasArray);
+                resultadoSpan.textContent = palabrasFiltradas.join(', ');
+            } else {
+                resultadoSpan.textContent = 'Por favor ingrese palabras válidas.';
+            }
+        }
+    </script>
+</body>
+</html>

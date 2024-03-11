@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos Aprobados y Suspensos</title>
+</head>
+<body>
+    <h1>Alumnos Aprobados y Suspensos</h1>
+    
+    <form id="alumnosForm">
+        <label for="alumnos">Ingrese los datos de los alumnos (nombre y nota separados por coma):</label>
+        <input type="text" id="alumnos" name="alumnos" placeholder="Ej: Victor, 10; Juan, 5; Pepe, 4">
+
+        <button type="button" onclick="calcularEstado()">Calcular Aprobados y Suspensos</button>
+    </form>
+
+    <p>Alumnos Aprobados: <span id="aprobados"></span></p>
+    <p>Alumnos Suspensos: <span id="suspendidos"></span></p>
+
+    <script>
+        function suspensos(alumnos) {
+            let aprobados = 0, suspensos = 0;
+
+            for (alumno of alumnos) {
+                if (alumno[1] >= 5) {
+                    aprobados++;
+                } else {
+                    suspensos++;
+                }
+            }
+
+            return {
+                "aprobados": aprobados,
+                "suspensos": suspensos
+            };
+        }
+
+        function calcularEstado() {
+            const alumnosInput = document.getElementById('alumnos').value;
+            const aprobadosSpan = document.getElementById('aprobados');
+            const suspendidosSpan = document.getElementById('suspendidos');
+
+            if (alumnosInput) {
+                const alumnosArray = alumnosInput.split(';').map(alumno => {
+                    const datos = alumno.split(',').map(item => item.trim());
+                    return [datos[0], parseInt(datos[1])];
+                });
+
+                const resultado = suspensos(alumnosArray);
+                aprobadosSpan.textContent = resultado.aprobados;
+                suspendidosSpan.textContent = resultado.suspensos;
+            } else {
+                aprobadosSpan.textContent = '0';
+                suspendidosSpan.textContent = '0';
+            }
+        }
+    </script>
+</body>
+</html>

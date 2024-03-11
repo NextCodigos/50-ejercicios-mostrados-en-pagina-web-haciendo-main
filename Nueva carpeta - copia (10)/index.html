@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Escalera</title>
+</head>
+<body>
+    <h1>Generador de Escalera</h1>
+    <label for="numero">Introduce un número para la escalera:</label>
+    <input type="number" id="numeroInput">
+    <button onclick="generarEscalera()">Generar Escalera</button>
+    <div id="escaleraOutput"></div>
+
+    <script>
+        function generarEscalera() {
+            const numeroInput = document.getElementById('numeroInput');
+            const numero = parseInt(numeroInput.value);
+            const resultado = escalera(numero);
+            document.getElementById('escaleraOutput').innerHTML = resultado;
+            numeroInput.focus(); // Mantener el foco en el input después de hacer clic en el botón
+        }
+
+        function escalera(numero) {
+            let escalera_completa = "";
+
+            for (let nivel = 1; nivel <= numero; nivel++) {
+                let escalones = "";
+
+                for (let escalon = 1; escalon <= nivel; escalon++) {
+                    escalones += "[-]";
+                }
+
+                escalera_completa += escalones + "<br>";
+            }
+            
+            return escalera_completa;
+        }
+    </script>
+</body>
+</html>

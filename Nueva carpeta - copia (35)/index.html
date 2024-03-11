@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontrar Primero y Último Elemento</title>
+</head>
+<body>
+    <h1>Buscar Primer y Último Elemento</h1>
+
+    <label for="numeros">Introduce números separados por comas:</label>
+    <input type="text" id="numeros" placeholder="Ejemplo: 100, 200, 300, 780">
+    <button onclick="buscarElementos()">Buscar</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function primeroYultimo(elementos) {
+            let nuevos_elementos = [];
+            nuevos_elementos.push(elementos[0], elementos[elementos.length - 1]);
+            return nuevos_elementos;
+        }
+
+        function buscarElementos() {
+            const numerosInput = document.getElementById("numeros").value;
+            const numerosArray = numerosInput.split(',').map(num => parseInt(num.trim(), 10));
+
+            const resultadoElement = document.getElementById("resultado");
+            if (numerosArray.length >= 2) {
+                const resultado = primeroYultimo(numerosArray);
+                resultadoElement.textContent = `El primer y último elemento son: ${resultado.join(', ')}`;
+            } else {
+                resultadoElement.textContent = 'Por favor, introduce al menos dos números separados por comas.';
+            }
+        }
+    </script>
+</body>
+</html>

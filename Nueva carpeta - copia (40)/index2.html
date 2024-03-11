@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Más Alto y Más Bajo</title>
+</head>
+<body>
+    <h1>Número Más Alto y Más Bajo</h1>
+
+    <p>Array de números: [88, 100, 1, 2, 3, 43, 20, 12, 600, 900, 22]</p>
+
+    <button onclick="calcularNumeroAltoBajo()">Calcular Números Alto y Bajo</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function altoBajo(numeros) {
+            let ordenados = numeros.sort((a, b) => a - b);
+
+            return {
+                bajo: ordenados[0],
+                alto: ordenados[ordenados.length - 1]
+            };
+        }
+
+        function calcularNumeroAltoBajo() {
+            const numeros = [88, 100, 1, 2, 3, 43, 20, 12, 600, 900, 22];
+            const resultado = altoBajo(numeros);
+
+            const resultadoElement = document.getElementById("resultado");
+            resultadoElement.textContent = `El número más bajo es: ${resultado.bajo} y el número más alto es: ${resultado.alto}`;
+        }
+    </script>
+</body>
+</html>

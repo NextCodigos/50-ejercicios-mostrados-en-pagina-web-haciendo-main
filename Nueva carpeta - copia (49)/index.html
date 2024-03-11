@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificar propiedad en un objeto</title>
+</head>
+<body>
+    <h1>Verificar si una propiedad existe en un objeto</h1>
+    <label for="objetoInput">Ingrese el objeto (en formato JSON):</label>
+    <input type="text" id="objetoInput" placeholder='{"nombre": "victor", "apellido": "Robles"}'><br>
+    <label for="propiedadInput">Ingrese la propiedad a verificar:</label>
+    <input type="text" id="propiedadInput" placeholder="nombre"><br>
+    <button onclick="verificarPropiedad()">Verificar</button><br>
+    <div id="resultado"></div>
+
+    <script>
+        function existePropiedad(objeto, propiedad) {
+            if (typeof objeto === 'object' && typeof propiedad === 'string' && Object.prototype.hasOwnProperty.call(objeto, propiedad)) {
+                return true;
+            }
+            return false;
+        }
+
+        function verificarPropiedad() {
+            const objetoInput = document.getElementById('objetoInput').value;
+            const propiedadInput = document.getElementById('propiedadInput').value;
+
+            let objeto;
+            try {
+                objeto = JSON.parse(objetoInput);
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = 'Error al analizar el objeto JSON.';
+                return;
+            }
+
+            const propiedadExiste = existePropiedad(objeto, propiedadInput);
+
+            if (propiedadExiste) {
+                document.getElementById('resultado').innerHTML = `La propiedad "${propiedadInput}" existe en el objeto.`;
+            } else {
+                document.getElementById('resultado').innerHTML = `La propiedad "${propiedadInput}" no existe en el objeto.`;
+            }
+        }
+    </script>
+</body>
+</html>

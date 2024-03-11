@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Divisores</title>
+</head>
+<body>
+    <h1>Mostrar Divisores</h1>
+    <label for="numeroInput">Introduce un número:</label>
+    <input type="number" id="numeroInput">
+    <button onclick="mostrarDivisores()">Mostrar Divisores</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function divisor(numero, posible_divisor) {
+            if (numero % posible_divisor === 0) {
+                return posible_divisor;
+            }
+
+            return 0;
+        }
+
+        function mostrarDivisores() {
+            const numero = parseInt(document.getElementById('numeroInput').value);
+            let divisores = [];
+            for (let i = 1; i <= numero; i++) {
+                let esDivisor = divisor(numero, i);
+                if (esDivisor) {
+                    divisores.push(esDivisor);
+                }
+            }
+
+            const resultadoOutput = document.getElementById('resultadoOutput');
+            resultadoOutput.innerText = divisores.join('\n');
+        }
+    </script>
+</body>
+</html>

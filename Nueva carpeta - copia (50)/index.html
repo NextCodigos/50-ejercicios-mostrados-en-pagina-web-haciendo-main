@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contar bucles en un número</title>
+</head>
+<body>
+    <h1>Contar bucles en un número</h1>
+    <label for="numeroInput">Ingrese un número:</label>
+    <input type="number" id="numeroInput" placeholder="Escribe un número"><br>
+    <button onclick="contarBucles()">Contar bucles</button><br>
+    <div id="resultado"></div>
+
+    <script>
+        function bucles(numero) {
+            let arrayNumeros = numero.toString().split('');
+            let bucles = 0;
+
+            for(let num of arrayNumeros){
+                num = parseInt(num);
+
+                if(num === 0 || num === 6 || num === 9){
+                    bucles++;
+                } else if(num === 8){
+                    bucles += 2;
+                }
+            }
+
+            return bucles;
+        }
+
+        function contarBucles() {
+            const numero = document.getElementById('numeroInput').value;
+            const num = parseInt(numero);
+            
+            if(!isNaN(num)){
+                const cantidadBucles = bucles(num);
+                document.getElementById('resultado').innerText = `El número ${num} tiene ${cantidadBucles} bucle(s)`;
+            } else {
+                document.getElementById('resultado').innerText = 'Por favor, ingrese un número válido.';
+            }
+        }
+    </script>
+</body>
+</html>

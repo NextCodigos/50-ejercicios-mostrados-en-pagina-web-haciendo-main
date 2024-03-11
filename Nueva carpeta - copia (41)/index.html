@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triángulo de Asteriscos</title>
+</head>
+<body>
+    <h1>Triángulo de Asteriscos</h1>
+
+    <label for="numeroInput">Introduce un número para dibujar el triángulo:</label>
+    <input type="number" id="numeroInput" min="1" placeholder="Ingrese un número">
+
+    <button onclick="dibujarTriangulo()">Dibujar Triángulo</button>
+
+    <pre id="trianguloResultado"></pre>
+
+    <script>
+        function triangulo(numero) {
+            let mitad = Math.floor(numero - 1);
+            let resultado = "";
+
+            for (let fila = 0; fila < numero; fila++) {
+                let nivel = "";
+    
+                for (let columna = 0; columna < (2 * numero - 1); columna++) {
+                    if (mitad - fila <= columna && mitad + fila >= columna) {
+                        nivel += "*";
+                    } else {
+                        nivel += " ";
+                    }
+                }
+    
+                resultado += nivel + "\n";
+            }
+    
+            return resultado;
+        }
+
+        function dibujarTriangulo() {
+            const numero = parseInt(document.getElementById("numeroInput").value);
+            const trianguloResultado = document.getElementById("trianguloResultado");
+
+            if (isNaN(numero) || numero < 1) {
+                trianguloResultado.textContent = "Por favor, introduce un número válido mayor o igual a 1.";
+            } else {
+                const resultadoTriangulo = triangulo(numero);
+                trianguloResultado.textContent = resultadoTriangulo;
+            }
+        }
+    </script>
+</body>
+</html>

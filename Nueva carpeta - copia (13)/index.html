@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisor de Arrays</title>
+</head>
+<body>
+    <h1>Divisor de Arrays</h1>
+
+    <label for="arrayInput">Ingrese los elementos del array separados por comas:</label>
+    <input type="text" id="arrayInput" placeholder="Ejemplo: 7,8,9,10,5"><br><br>
+
+    <label for="numeroElementosInput">Ingrese el número de elementos por sub-array:</label>
+    <input type="number" id="numeroElementosInput" placeholder="Ingrese el número de elementos"><br><br>
+
+    <button onclick="dividirArray()">Dividir Array</button><br><br>
+
+    <ul id="resultado"></ul>
+
+    <script>
+        function dividirArray() {
+            let arrayString = document.getElementById("arrayInput").value;
+            let numeroElementos = parseInt(document.getElementById("numeroElementosInput").value);
+            let array = arrayString.split(",").map(Number);
+            let resultado = divideArray(array, numeroElementos);
+
+            let listaResultado = document.getElementById("resultado");
+            listaResultado.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
+
+            resultado.forEach(subArray => {
+                let li = document.createElement("li");
+                li.textContent = JSON.stringify(subArray);
+                listaResultado.appendChild(li);
+            });
+        }
+
+        function divideArray(arrayPrincipal, numeroElementos) {
+            let arreglos = [];
+
+            for (let elemento of arrayPrincipal) {
+                let ultimo = arreglos[arreglos.length - 1];
+
+                if (!ultimo || ultimo.length === numeroElementos) {
+                    arreglos.push([elemento]);
+                } else {
+                    ultimo.push(elemento);
+                }
+            }
+
+            return arreglos;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+</head>
+<body>
+    <h1>Reloj Digital</h1>
+    <p id="reloj"></p>
+
+    <script>
+        class Reloj {
+            constructor() {
+                this.fecha = new Date();
+                this.horas = this.fecha.getHours();
+                this.minutos = this.fecha.getMinutes();
+                this.segundos = this.fecha.getSeconds();
+            }
+
+            actualizar(segundos) {
+                this.segundos += segundos;
+
+                if (this.segundos >= 60) {
+                    this.minutos++;
+                    this.segundos = 0;
+                }
+
+                if (this.minutos >= 60) {
+                    this.horas++;
+                    this.minutos = 0;
+                }
+
+                if (this.horas >= 24) {
+                    this.horas = 0;
+                }
+            }
+
+            mostrar() {
+                this.actualizar(1);
+                document.getElementById("reloj").innerText = `${this.horas}:${this.minutos}:${this.segundos}`;
+            }
+
+            encender() {
+                setInterval(() => {
+                    this.mostrar();
+                }, 1000);
+            }
+        }
+
+        let miReloj = new Reloj();
+        miReloj.encender();
+    </script>
+</body>
+</html>

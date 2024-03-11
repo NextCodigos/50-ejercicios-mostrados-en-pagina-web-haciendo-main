@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Media</title>
+</head>
+<body>
+    <h1>Calculadora de Media</h1>
+    
+    <form id="mediaForm">
+        <label for="numeros">Ingrese los números separados por coma (,):</label>
+        <input type="text" id="numeros" name="numeros" placeholder="Ej: 1,2,3,4,5">
+
+        <button type="button" onclick="calcularMedia()">Calcular Media</button>
+    </form>
+
+    <p>La media de los números ingresados es: <span id="resultado"></span></p>
+
+    <script>
+        function laMedia(numeros) {
+            let nums = numeros.split(',').map(num => parseInt(num.trim()));
+            let suma = nums.reduce((valorAcumulado, numeroActual) => {
+                return valorAcumulado + numeroActual;
+            });
+
+            let media = suma / nums.length;
+
+            return media;
+        }
+
+        function calcularMedia() {
+            const numerosInput = document.getElementById('numeros').value;
+            const resultadoSpan = document.getElementById('resultado');
+
+            if (numerosInput) {
+                const media = laMedia(numerosInput);
+                resultadoSpan.textContent = media;
+            } else {
+                resultadoSpan.textContent = 'Por favor ingrese números válidos.';
+            }
+        }
+    </script>
+</body>
+</html>

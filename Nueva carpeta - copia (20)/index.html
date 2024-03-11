@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobar Anagramas</title>
+</head>
+<body>
+    <h1>Comprobar Anagramas</h1>
+    <label for="texto1Input">Introduce el primer texto:</label>
+    <input type="text" id="texto1Input">
+
+    <label for="texto2Input">Introduce el segundo texto:</label>
+    <input type="text" id="texto2Input">
+
+    <button onclick="comprobarAnagramas()">Comprobar Anagramas</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function limpiarTexto(texto) {
+            return texto
+                .replace(/[^\w]/gi, '')
+                .toLowerCase()
+                .split('')
+                .sort()
+                .join('');
+        }
+
+        function anagramas(texto1, texto2) {
+            return limpiarTexto(texto1) === limpiarTexto(texto2);
+        }
+
+        function comprobarAnagramas() {
+            const texto1 = document.getElementById('texto1Input').value;
+            const texto2 = document.getElementById('texto2Input').value;
+            const resultado = anagramas(texto1, texto2);
+            const mensaje = resultado ? '¡Son anagramas!' : 'No son anagramas...';
+
+            document.getElementById('resultadoOutput').innerText = mensaje;
+        }
+    </script>
+</body>
+</html>

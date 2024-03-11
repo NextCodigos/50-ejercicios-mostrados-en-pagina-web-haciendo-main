@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aficiones más Comunes</title>
+</head>
+<body>
+    <h1>Aficiones más Comunes de los Usuarios</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Aficiones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Victor</td>
+                <td>informatica, cine, videojuegos</td>
+            </tr>
+            <tr>
+                <td>Ramon</td>
+                <td>informatica, futbol, tenis</td>
+            </tr>
+            <tr>
+                <td>Paco</td>
+                <td>informatica, cine, surf</td>
+            </tr>
+            <tr>
+                <td>Pepe</td>
+                <td>informatica, cine, videojuegos, futbol, surf</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <h2>Aficiones más Comunes:</h2>
+
+    <div>
+        <label for="modificarAficiones">Modificar Aficiones (separadas por comas):</label>
+        <input type="text" id="modificarAficiones" placeholder="Ej: deportes, cine">
+    </div>
+
+    <button onclick="mostrarAficionesComunes()">Mostrar Aficiones Comunes</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function aficiones(arrObj) {
+            let mapeo = {};
+
+            arrObj.forEach(objeto => {
+                for(let aficion of objeto.aficiones) {
+                    if (!mapeo[aficion]){
+                        mapeo[aficion] = 1;
+                    } else {
+                        mapeo[aficion]++;
+                    }
+                }
+            });
+
+            return mapeo;
+        }
+
+        const usuarios = [
+            { nombre: "Victor", aficiones: ["informatica", "cine", "videojuegos"] },
+            { nombre: "Ramon", aficiones: ["informatica", "futbol", "tenis"] },
+            { nombre: "Paco", aficiones: ["informatica", "cine", "surf"] },
+            { nombre: "Pepe", aficiones: ["informatica", "cine", "videojuegos", "futbol", "surf"] },
+        ];
+
+        function mostrarAficionesComunes() {
+            const modificarAficionesInput = document.getElementById('modificarAficiones');
+            const resultadoDiv = document.getElementById('resultado');
+
+            const aficionesModificadas = modificarAficionesInput.value.split(", ");
+
+            const usuariosModificados = usuarios.map(usuario => {
+                return { nombre: usuario.nombre, aficiones: aficionesModificadas };
+            });
+
+            const aficionesComunes = aficiones(usuariosModificados);
+
+            resultadoDiv.innerHTML = `<pre>${JSON.stringify(aficionesComunes, null, 2)}</pre>`;
+        }
+    </script>
+</body>
+</html>

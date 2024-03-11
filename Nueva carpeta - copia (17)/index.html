@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buzz Lightyear</title>
+</head>
+<body>
+    <h1>Buzz Lightyear</h1>
+    <label for="numeroInput">Introduce un número:</label>
+    <input type="number" id="numeroInput">
+    <button onclick="mostrarBuzz()">Mostrar Buzz Lightyear</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function buzz(numero) {
+            let resultado = "";
+            if (numero % 3 === 0 && numero % 5 === 0) {
+                resultado = "BuzzLightyear";
+            } else if (numero % 3 === 0) {
+                resultado = "buzz";
+            } else if (numero % 5 === 0) {
+                resultado = "lightyear";
+            } else {
+                resultado = numero;
+            }
+            return resultado;
+        }
+
+        function imprimir(numero) {
+            let resultados = [];
+            for (let i = 1; i <= numero; i++) {
+                resultados.push(buzz(i));
+            }
+            return resultados;
+        }
+
+        function mostrarBuzz() {
+            const numero = parseInt(document.getElementById('numeroInput').value);
+            const resultados = imprimir(numero);
+            document.getElementById('resultadoOutput').innerHTML = resultados.join("<br>");
+        }
+    </script>
+</body>
+</html>

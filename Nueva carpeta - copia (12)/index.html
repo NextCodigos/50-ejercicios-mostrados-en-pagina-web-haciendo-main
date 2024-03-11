@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Lista de Números</title>
+</head>
+<body>
+    <h1>Generador de Lista de Números</h1>
+
+    <label for="numeroInput">Ingrese un número:</label>
+    <input type="number" id="numeroInput" placeholder="Ingrese un número"><br><br>
+
+    <button onclick="generarLista()">Generar Lista</button><br><br>
+
+    <ul id="listaNumeros"></ul>
+
+    <script>
+        function generarLista() {
+            let numero = parseInt(document.getElementById("numeroInput").value);
+            let lista = document.getElementById("listaNumeros");
+            lista.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
+
+            let resultado = hastaCero(numero);
+            let numeros = resultado.split("\n");
+
+            numeros.forEach(num => {
+                let li = document.createElement("li");
+                li.textContent = num;
+                lista.appendChild(li);
+            });
+        }
+
+        function hastaCero(numero) {
+            let resultado = `--- Del ${numero} al 0 --- \n`;
+
+            while (numero > 0) {
+                resultado += `- nº${numero} \n`;
+                numero -= 8;
+            }
+
+            if (numero <= 0) {
+                resultado += "- nº0 \n";
+            }
+
+            resultado += "--- FIN ---";
+
+            return resultado;
+        }
+    </script>
+</body>
+</html>

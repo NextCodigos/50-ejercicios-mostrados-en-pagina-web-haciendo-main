@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Películas</title>
+</head>
+<body>
+    <h1>Mis Películas</h1>
+
+    <div>
+        <label for="tituloInput">Título de la película:</label>
+        <input type="text" id="tituloInput">
+
+        <label for="directorInput">Director de la película:</label>
+        <input type="text" id="directorInput">
+
+        <label for="vistaInput">¿Has visto la película?</label>
+        <input type="checkbox" id="vistaInput">
+
+        <button onclick="agregarPelicula()">Agregar Película</button>
+    </div>
+
+    <div id="resultadoOutput"></div>
+
+    <script>
+        let coleccion_de_peliculas = [];
+
+        function misPeliculas(peliculas) {
+            let resultado = '';
+            for (pelicula of peliculas) {
+                let para_mostrar = `"${pelicula.titulo} de ${pelicula.director}"`;
+    
+                if (pelicula.vista) {
+                    resultado += "Ya has visto: " + para_mostrar + '<br>';
+                } else {
+                    resultado += "Te falta por ver: " + para_mostrar + '<br>';
+                }
+            }
+    
+            return resultado;
+        }
+
+        function agregarPelicula() {
+            const titulo = document.getElementById('tituloInput').value;
+            const director = document.getElementById('directorInput').value;
+            const vista = document.getElementById('vistaInput').checked;
+    
+            coleccion_de_peliculas.push({
+                titulo: titulo,
+                director: director,
+                vista: vista
+            });
+    
+            actualizarOutput();
+            limpiarCampos();
+        }
+
+        function actualizarOutput() {
+            const resultadoOutput = document.getElementById('resultadoOutput');
+            resultadoOutput.innerHTML = misPeliculas(coleccion_de_peliculas);
+        }
+
+        function limpiarCampos() {
+            document.getElementById('tituloInput').value = '';
+            document.getElementById('directorInput').value = '';
+            document.getElementById('vistaInput').checked = false;
+        }
+
+        actualizarOutput(); // Mostrar las películas al cargar la página
+    </script>
+</body>
+</html>

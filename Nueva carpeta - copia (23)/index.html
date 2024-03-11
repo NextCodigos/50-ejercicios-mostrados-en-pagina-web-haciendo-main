@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalizar Primera Letra</title>
+</head>
+<body>
+    <h1>Capitalizar Primera Letra de Palabras</h1>
+    <label for="textoInput">Introduce un texto:</label>
+    <input type="text" id="textoInput">
+
+    <button onclick="capitalizarPalabras()">Capitalizar</button>
+    <div id="resultadoOutput"></div>
+
+    <script>
+        function enMayuscula(texto) {
+            let palabras = [];
+
+            for (let palabra of texto.split(" ")) {
+                palabras.push(palabra[0].toUpperCase() + palabra.substring(1));
+            }
+
+            return palabras.join(' ');
+        }
+
+        function capitalizarPalabras() {
+            const texto = document.getElementById('textoInput').value;
+            const resultado = enMayuscula(texto);
+
+            document.getElementById('resultadoOutput').innerText = "Resultado: " + resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Días</title>
+</head>
+<body>
+    <input type="number" id="inputDias" placeholder="Ingrese la cantidad de días">
+    <input type="text" id="resultado" placeholder="Resultado" readonly>
+    <button id="calcular">Calcular</button>
+
+    <script>
+        function calcularDias(dias) {
+            let anios = Math.floor(dias / 365);
+            let dias_restantes = (dias % 365);
+            let meses = Math.floor(dias_restantes / 30);
+            dias_restantes = dias_restantes % 30;
+
+            return `Equivalente a ${anios} años, ${meses} meses y ${dias_restantes} días.`;
+        }
+
+        document.getElementById('calcular').addEventListener('click', function() {
+            const inputDias = parseInt(document.getElementById('inputDias').value);
+
+            if (!isNaN(inputDias)) {
+                const resultado = calcularDias(inputDias);
+                document.getElementById('resultado').value = resultado;
+            } else {
+                alert('Por favor, introduzca un número válido de días.');
+            }
+        });
+    </script>
+</body>
+</html>

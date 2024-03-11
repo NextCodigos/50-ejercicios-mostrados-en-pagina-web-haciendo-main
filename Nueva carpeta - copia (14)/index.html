@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repetidor de Texto</title>
+</head>
+<body>
+    <h1>Repetidor de Texto</h1>
+    <label for="textoInput">Introduce un texto:</label>
+    <input type="text" id="textoInput"><br><br>
+    
+    <label for="repeticionesInput">Número de repeticiones:</label>
+    <input type="number" id="repeticionesInput"><br><br>
+
+    <button onclick="repetirTexto()">Repetir Texto</button><br><br>
+
+    <div id="resultadoOutput"></div>
+
+    <script>
+        String.prototype.repiteme = function(numero_repeticiones) {
+            let resultado = "";
+
+            for (let i = 0; i < numero_repeticiones; i++) {
+                resultado += this;
+            }
+
+            return resultado;
+        }
+
+        function repetirTexto() {
+            const texto = document.getElementById('textoInput').value;
+            const repeticiones = parseInt(document.getElementById('repeticionesInput').value);
+            
+            const resultado = texto.repiteme(repeticiones);
+            document.getElementById('resultadoOutput').innerText = resultado;
+        }
+    </script>
+</body>
+</html>

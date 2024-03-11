@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contar Consonantes y Vocales</title>
+</head>
+<body>
+    <h1>Contar Consonantes y Vocales en un Texto</h1>
+
+    <label for="texto">Introduce un texto:</label>
+    <input type="text" id="texto" placeholder="Ejemplo: victorroblesweb.es">
+    <button onclick="contarLetras()">Contar</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function cuentaLetras(texto) {
+            let consonantes = 0, vocales = 0, texto_limpio = "";
+    
+            texto_limpio = texto.split("")
+                                .filter(letra => /[áéíóú\w]/gi.test(letra) && isNaN(letra))
+                                .join("");
+    
+            for (let letra of texto_limpio) {
+                if(/[áéíóúaeiou]/gi.test(letra)) {
+                    vocales++;
+                } else {
+                    consonantes++;
+                }
+    
+            }
+            return [consonantes, vocales];
+        }
+    
+        function contarLetras() {
+            const textoInput = document.getElementById("texto").value;
+    
+            const resultadoElement = document.getElementById("resultado");
+            if (textoInput.length > 0) {
+                const letras = cuentaLetras(textoInput);
+                resultadoElement.textContent = `Consonantes: ${letras[0]}, Vocales: ${letras[1]}`;
+            } else {
+                resultadoElement.textContent = 'Por favor, introduce un texto.';
+            }
+        }
+    </script>
+</body>
+</html>
