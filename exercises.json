@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "name": "Ejercicio 1",
+    "path": "ejer1/ejercicio1.js"
+  },
+  {
+    "id": 2,
+    "name": "Ejercicio 2",
+    "path": "ejer1/ejercicio2.js"
+  },
+  {
+    "id": 2,
+    "name": "Ejercicio 2",
+    "path": "ejer2/ejercicio2.js"
+  },
+  {
+    "id": 3,
+    "name": "Ejercicio 3",
+    "path": "ejer3/ejercicio3.js"
+  },
+  {
+    "id": 4,
+    "name": "Ejercicio 4",
+    "path": "Nueva carpeta (3)/ejercicio4.js"
+  },
+  {
+    "id": 5,
+    "name": "Ejercicio 5",
+    "path": "Nueva carpeta (5)/ejercicio5.js"
+  },
+  {
+    "id": 6,
+    "name": "Ejercicio 6",
+    "path": "Nueva carpeta (6)/ejercicio6.js"
+  },
+  {
+    "id": 7,
+    "name": "Ejercicio 7",
+    "path": "Nueva carpeta (7)/ejercicio7.js"
+  },
+  {
+    "id": 8,
+    "name": "Ejercicio 8",
+    "path": "Nueva carpeta (8)/ejercicio8.js"
+  },
+  {
+    "id": 9,
+    "name": "Ejercicio 9",
+    "path": "Nueva carpeta (9)/ejercicio9.js"
+  },
+  {
+    "id": 10,
+    "name": "Ejercicio 10",
+    "path": "Nueva carpeta (10)/ejercicio10.js"
+  },
+  {
+    "id": 11,
+    "name": "Ejercicio 11",
+    "path": "Nueva carpeta (11)/ejercicio11.js"
+  },
+  {
+    "id": 12,
+    "name": "Ejercicio 12",
+    "path": "Nueva carpeta (12)/ejercicio12.js"
+  },
+  {
+    "id": 13,
+    "name": "Ejercicio 13",
+    "path": "Nueva carpeta (13)/ejercicio13.js"
+  },
+  {
+    "id": 14,
+    "name": "Ejercicio 14",
+    "path": "Nueva carpeta (14)/ejercicio14.js"
+  },
+  {
+    "id": 15,
+    "name": "Ejercicio 15",
+    "path": "Nueva carpeta (15)/ejercicio15.js"
+  },
+  {
+    "id": 16,
+    "name": "Ejercicio 16",
+    "path": "Nueva carpeta (16)/ejercicio16.js"
+  },
+  {
+    "id": 17,
+    "name": "Ejercicio 17",
+    "path": "Nueva carpeta (17)/ejercicio17.js"
+  },
+  {
+    "id": 18,
+    "name": "Ejercicio 18",
+    "path": "Nueva carpeta (18)/ejercicio18.js"
+  },
+  {
+    "id": 19,
+    "name": "Ejercicio 19",
+    "path": "Nueva carpeta (19)/ejercicio19.js"
+  },
+  {
+    "id": 20,
+    "name": "Ejercicio 20",
+    "path": "Nueva carpeta (20)/ejercicio20.js"
+  },
+  {
+    "id": 21,
+    "name": "Ejercicio 21",
+    "path": "Nueva carpeta (21)/ejercicio21.js"
+  },
+  {
+    "id": 22,
+    "name": "Ejercicio 22",
+    "path": "Nueva carpeta (22)/ejercicio22.js"
+  },
+  {
+    "id": 23,
+    "name": "Ejercicio 23",
+    "path": "Nueva carpeta (23)/ejercicio23.js"
+  },
+  {
+    "id": 24,
+    "name": "Ejercicio 24",
+    "path": "Nueva carpeta (24)/ejercicio24.js"
+  },
+  {
+    "id": 25,
+    "name": "Ejercicio 25",
+    "path": "Nueva carpeta (25)/ejercicio25.js"
+  },
+  {
+    "id": 26,
+    "name": "Ejercicio 26",
+    "path": "Nueva carpeta (26)/ejercicio26.js"
+  },
+  {
+    "id": 27,
+    "name": "Ejercicio 27",
+    "path": "Nueva carpeta (27)/ejercicio27.js"
+  },
+  {
+    "id": 28,
+    "name": "Ejercicio 28",
+    "path": "Nueva carpeta (28)/ejercicio28.js"
+  },
+  {
+    "id": 29,
+    "name": "Ejercicio 29",
+    "path": "Nueva carpeta (29)/ejercicio29.js"
+  },
+  {
+    "id": 30,
+    "name": "Ejercicio 30",
+    "path": "Nueva carpeta (30)/ejercicio30.js"
+  },
+  {
+    "id": 31,
+    "name": "Ejercicio 31",
+    "path": "Nueva carpeta (31)/ejercicio31.js"
+  },
+  {
+    "id": 32,
+    "name": "Ejercicio 32",
+    "path": "Nueva carpeta (32)/ejercicio32.js"
+  },
+  {
+    "id": 33,
+    "name": "Ejercicio 33",
+    "path": "Nueva carpeta (33)/ejercicio33.js"
+  },
+  {
+    "id": 34,
+    "name": "Ejercicio 34",
+    "path": "Nueva carpeta (34)/ejercicio34.js"
+  },
+  {
+    "id": 35,
+    "name": "Ejercicio 35",
+    "path": "Nueva carpeta (35)/ejercicio35.js"
+  },
+  {
+    "id": 36,
+    "name": "Ejercicio 36",
+    "path": "Nueva carpeta (36)/ejercicio36.js"
+  },
+  {
+    "id": 37,
+    "name": "Ejercicio 37",
+    "path": "Nueva carpeta (37)/ejercicio37.js"
+  },
+  {
+    "id": 38,
+    "name": "Ejercicio 38",
+    "path": "Nueva carpeta (38)/ejercicio38.js"
+  },
+  {
+    "id": 39,
+    "name": "Ejercicio 39",
+    "path": "Nueva carpeta (39)/ejercicio39.js"
+  },
+  {
+    "id": 40,
+    "name": "Ejercicio 40",
+    "path": "Nueva carpeta (40)/ejercicio40.js"
+  },
+  {
+    "id": 41,
+    "name": "Ejercicio 41",
+    "path": "Nueva carpeta (41)/ejercicio41.js"
+  },
+  {
+    "id": 42,
+    "name": "Ejercicio 42",
+    "path": "Nueva carpeta (42)/ejercicio42.js"
+  },
+  {
+    "id": 43,
+    "name": "Ejercicio 43",
+    "path": "Nueva carpeta (43)/ejercicio43.js"
+  },
+  {
+    "id": 44,
+    "name": "Ejercicio 44",
+    "path": "Nueva carpeta (44)/ejercicio44.js"
+  },
+  {
+    "id": 45,
+    "name": "Ejercicio 45",
+    "path": "Nueva carpeta (45)/ejercicio45.js"
+  },
+  {
+    "id": 46,
+    "name": "Ejercicio 46",
+    "path": "Nueva carpeta (46)/ejercicio46.js"
+  },
+  {
+    "id": 47,
+    "name": "Ejercicio 47",
+    "path": "Nueva carpeta (47)/ejercicio47.js"
+  },
+  {
+    "id": 48,
+    "name": "Ejercicio 48",
+    "path": "Nueva carpeta (48)/ejercicio48.js"
+  },
+  {
+    "id": 49,
+    "name": "Ejercicio 49",
+    "path": "Nueva carpeta (49)/ejercicio49.js"
+  },
+  {
+    "id": 50,
+    "name": "Ejercicio 50",
+    "path": "Nueva carpeta (50)/ejercicio50.js"
+  },
+  {
+    "id": 51,
+    "name": "Ejercicio 51",
+    "path": "Nueva carpeta (51)/ejercicio51.js"
+  }
+]

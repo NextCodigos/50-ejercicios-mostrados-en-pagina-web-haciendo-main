@@ -3,34 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Números</title>
+    <title>Visor de Ejercicios JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Fixes for responsiveness and layout */
+        body, html { margin: 0; padding: 0; height: 100%; }
+        .app-container { display: flex; height: 100vh; overflow: hidden; }
+        .sidebar { width: 250px; background: var(--bg-sidebar); display: flex; flex-direction: column; border-right: 1px solid var(--border); flex-shrink: 0; }
+        .exercise-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        .exercise-item { padding: 10px; cursor: pointer; border-bottom: 1px solid var(--border); width: 100%; display: block; }
+        
+        .main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .workspace { flex: 1; display: flex; overflow: hidden; }
+        .panel { flex: 1; display: flex; flex-direction: column; min-width: 0; border-right: 1px solid var(--border); }
+        .editor-container, .console-output { flex: 1; overflow: auto; padding: 1rem; }
+        
+        /* Code responsiveness */
+        code { white-space: pre-wrap; word-break: break-word; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .app-container { flex-direction: column; height: auto; min-height: 100vh; }
+            .sidebar { width: 100%; height: 300px; border-right: none; border-bottom: 1px solid var(--border); }
+            .workspace { flex-direction: column; height: auto; }
+            .panel { height: 500px; border-right: none; border-bottom: 1px solid var(--border); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Lista de Números del 29 al 51</h1>
-    <ul>
-        <li>29</li>
-        <li>30</li>
-        <li>31</li>
-        <li>32</li>
-        <li>33</li>
-        <li>34</li>
-        <li>35</li>
-        <li>36</li>
-        <li>37</li>
-        <li>38</li>
-        <li>39</li>
-        <li>40</li>
-        <li>41</li>
-        <li>42</li>
-        <li>43</li>
-        <li>44</li>
-        <li>45</li>
-        <li>46</li>
-        <li>47</li>
-        <li>48</li>
-        <li>49</li>
-        <li>50</li>
-        <li>51</li>
-    </ul>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>JS Ejercicios</h1>
+                <p>Explorador de Código</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar ejercicio...">
+            </div>
+            <nav id="exerciseList" class="exercise-list">
+                <!-- List items will be injected here -->
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h2 id="currentExerciseTitle">Selecciona un ejercicio</h2>
+                <div class="actions">
+                    <button id="runBtn" class="btn btn-primary" disabled>
+                        <span class="icon">▶</span> Ejecutar
+                    </button>
+                </div>
+            </header>
+
+            <div class="workspace">
+                <div class="panel code-panel">
+                    <div class="panel-header">
+                        <span>Código Fuente</span>
+                    </div>
+                    <div class="editor-container">
+                        <pre><code id="codeDisplay" class="language-javascript"></code></pre>
+                    </div>
+                </div>
+
+                <div class="panel output-panel">
+                    <div class="panel-header">
+                        <span>Consola / Resultado</span>
+                        <button id="clearConsoleBtn" class="btn btn-sm">Limpiar</button>
+                    </div>
+                    <div id="consoleOutput" class="console-output">
+                        <div class="placeholder-text">El resultado de la ejecución aparecerá aquí...</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
 </body>
 </html>
